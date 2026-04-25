@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description"
+        content="Promise Works – Thoughtfully crafted gifts, embroidered keepsakes, dried bouquets and personalized hampers, made by hand for the people you cherish." />
+    <title>Promise Works – A Personal Promise Of Love In Every Present</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="images/logo.PNG" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+        /* ══════════════════════════════════════════
+   HOME PAGE – HERO (matches reference image)
+══════════════════════════════════════════ */
+        #hero {
+            min-height: 100vh;
+            background: var(--bg);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 7rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+            gap: 2rem;
+        }
+
+        /* Subtle radial glow */
+        #hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(232, 196, 192, .45) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            pointer-events: none
+        }
+
+        /* LEFT content */
+        .hero-left {
+            padding-left: max(1.5rem, calc((100vw - 1180px)/2 + 1.5rem));
+            padding-right: 2rem
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            padding: .3rem .9rem;
+            font-size: .68rem;
+            font-weight: 600;
+            color: var(--brown);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem
+        }
+
+        .hero-badge i {
+            color: var(--rose-mid);
+            font-size: .7rem
+        }
+
+        .hero-h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: .7rem;
+            font-weight: 400
+        }
+
+        .hero-h1 em {
+            font-style: italic;
+            color: var(--brown);
+            font-weight: 600
+        }
+
+        .hero-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            color: var(--dark);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            line-height: 1.4
+        }
+
+        .hero-desc {
+            font-size: .88rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 2rem;
+            max-width: 360px
+        }
+
+        .hero-btns {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            flex-wrap: wrap
+        }
+
+        /* RIGHT slideshow */
+        .hero-right {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 560px;
+            padding-right: max(1.5rem, calc((100vw - 1180px)/2 + 1.5rem));
+        }
+
+        .hero-slideshow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 16px 50px rgba(44, 24, 16, .22);
+            background: var(--border);
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity .9s ease;
+            pointer-events: none;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        /* Logo badge on slideshow */
+        .hero-logo-badge {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.92);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(44, 24, 16, .22);
+            z-index: 4;
+            text-align: center;
+            padding: .4rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-logo-badge .lb-name {
+            font-family: 'Playfair Display', serif;
+            font-size: .52rem;
+            color: var(--dark);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: .02em
+        }
+
+        .hero-logo-badge .lb-name em {
+            font-style: italic;
+            color: var(--brown)
+        }
+
+        .hero-logo-badge .lb-sub {
+            font-size: .4rem;
+            color: var(--muted);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-top: .1rem
+        }
+
+        /* Slideshow dots */
+        .slide-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: .45rem;
+            z-index: 5;
+        }
+
+        .slide-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.5);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: background .3s, transform .3s;
+        }
+
+        .slide-dot.active {
+            background: var(--white);
+            transform: scale(1.4);
+        }
+
+        /* Prev/Next arrows */
+        .slide-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.8);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+            color: var(--dark);
+            z-index: 5;
+            transition: background .25s;
+            backdrop-filter: blur(4px);
+        }
+
+        .slide-arrow:hover { background: var(--white); }
+        .slide-arrow.prev { left: .75rem; }
+        .slide-arrow.next { right: .75rem; }
+
+        /* Bottom badge */
+        .hero-made-badge {
+            position: absolute;
+            bottom: -20px;
+            left: 8%;
+            background: var(--white);
+            border-radius: 12px;
+            padding: .6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            box-shadow: 0 6px 24px rgba(44, 24, 16, .14);
+            z-index: 3;
+            animation: float 3.5s ease-in-out infinite;
+        }
+
+        .hero-made-badge .hb-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--rose-mid)
+        }
+
+        .hero-made-badge .hb-text {
+            font-size: .65rem;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.2;
+            letter-spacing: .06em;
+            text-transform: uppercase
+        }
+
+        /* ── WHY SECTION ── */
+        #why {
+            padding: 5.5rem 0 4rem;
+            background: var(--white)
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.4rem
+        }
+
+        .why-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: 1.6rem 1.2rem;
+            text-align: center;
+            transition: var(--tr)
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-md);
+            background: var(--white)
+        }
+
+        .why-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose), var(--rose-mid));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto .9rem;
+            font-size: 1.2rem;
+            color: var(--white)
+        }
+
+        .why-card h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark);
+            font-size: .95rem;
+            margin-bottom: .3rem
+        }
+
+        .why-card p {
+            font-size: .78rem;
+            color: var(--muted);
+            line-height: 1.6
+        }
+
+        /* ── PRODUCTS PREVIEW ── */
+        #featured {
+            padding: 5.5rem 0;
+            background: var(--bg)
+        }
+
+        .featured-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1rem
+        }
+
+        /* ── TESTIMONIALS ── */
+        #testimonials {
+            padding: 5.5rem 0;
+            background: var(--white)
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem
+        }
+
+        .testi-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: 1.5rem;
+            transition: var(--tr)
+        }
+
+        .testi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px var(--shadow-md)
+        }
+
+        .testi-stars {
+            color: #d4a04a;
+            font-size: .82rem;
+            margin-bottom: .65rem
+        }
+
+        .testi-text {
+            font-size: .83rem;
+            color: var(--muted);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: .9rem
+        }
+
+        .testi-author {
+            font-weight: 600;
+            font-size: .8rem;
+            color: var(--dark)
+        }
+
+        .testi-loc {
+            font-size: .72rem;
+            color: var(--muted)
+        }
+
+        /* ── CTA BANNER ── */
+        #cta-banner {
+            padding: 5rem 0;
+            background: var(--dark);
+            text-align: center;
+        }
+
+        #cta-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            color: var(--white);
+            margin-bottom: .6rem
+        }
+
+        #cta-banner p {
+            color: rgba(255, 255, 255, .55);
+            font-size: .88rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            font-family: 'Playfair Display', serif
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap
+        }
+
+        .btn-light {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .78rem 1.6rem;
+            background: var(--white);
+            color: var(--dark);
+            border: none;
+            border-radius: 99px;
+            font-size: .88rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--tr);
+            font-family: 'Poppins', sans-serif
+        }
+
+        .btn-light:hover {
+            background: var(--bg);
+            transform: translateY(-2px)
+        }
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:900px) {
+            #hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding: 6.5rem 1.5rem 3rem;
+                gap: 0
+            }
+
+            .hero-left {
+                padding-left: 0;
+                padding-right: 0;
+                text-align: center
+            }
+
+            .hero-desc {
+                max-width: 100%
+            }
+
+            .hero-btns {
+                justify-content: center
+            }
+
+            .hero-right {
+                display: none
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .testi-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media(max-width:540px) {
+            .why-grid { grid-template-columns: 1fr 1fr }
+            .hero-btns { flex-direction: column; align-items: center }
+            .rf-row { grid-template-columns: 1fr }
+        }
+
+        /* ── REVIEW SYSTEM ── */
+        .review-empty { text-align:center; padding:2.5rem 1rem; color:var(--muted) }
+        .review-empty .re-icon { font-size:2.5rem; display:block; margin-bottom:.7rem }
+        .btn-write-review {
+            display:inline-flex; align-items:center; gap:.5rem;
+            padding:.7rem 1.8rem; background:var(--dark-btn); color:var(--white);
+            border:none; border-radius:99px; font-size:.88rem; font-weight:600;
+            cursor:pointer; transition:var(--tr); font-family:'Poppins',sans-serif
+        }
+        .btn-write-review:hover { background:var(--dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(29,16,10,.28) }
+        .review-form-wrap { max-height:0; overflow:hidden; transition:max-height .5s ease; margin-top:0 }
+        .review-form-wrap.open { max-height:700px; margin-top:2rem }
+        .review-form-inner {
+            background:var(--bg); border:1px solid var(--border); border-radius:var(--r);
+            padding:2rem; max-width:640px; margin:0 auto
+        }
+        .review-form-inner h3 { font-family:'Playfair Display',serif; color:var(--dark); font-size:1.15rem; margin-bottom:1rem; text-align:center }
+        .star-picker { display:flex; justify-content:center; gap:.3rem; margin-bottom:1.2rem; font-size:2rem; cursor:pointer; user-select:none }
+        .sp-star { color:var(--border); transition:color .15s }
+        .sp-star.lit { color:#d4a04a }
+        .rf-row { display:grid; grid-template-columns:1fr 1fr; gap:.9rem }
+        .rf-group { margin-bottom:.9rem }
+        .rf-group label { display:block; font-size:.78rem; font-weight:600; color:var(--brown); margin-bottom:.3rem; letter-spacing:.03em }
+        .rf-group input, .rf-group textarea {
+            width:100%; padding:.64rem .9rem; border:1.5px solid var(--border);
+            border-radius:var(--r-sm); font-size:.85rem; font-family:'Poppins',sans-serif;
+            color:var(--text); background:var(--white); outline:none; transition:border var(--tr); box-sizing:border-box
+        }
+        .rf-group input:focus, .rf-group textarea:focus { border-color:var(--rose-mid) }
+        .rf-group textarea { resize:vertical; min-height:90px }
+        .btn-submit-review {
+            width:100%; padding:.78rem; background:var(--dark-btn); color:var(--white);
+            border:none; border-radius:99px; font-size:.9rem; font-weight:600;
+            cursor:pointer; transition:var(--tr); font-family:'Poppins',sans-serif;
+            display:flex; align-items:center; justify-content:center; gap:.5rem; margin-top:.5rem
+        }
+        .btn-submit-review:hover { background:var(--dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(29,16,10,.25) }
+    </style>
+</head>
+
+<body>
+
+    <div class="toast" id="toast"></div>
+    <a href="https://wa.me/918870855033?text=Hi+I+want+to+know+more+about+Promise+Works" target="_blank"
+        class="wa-float"><i class="fab fa-whatsapp"></i><span>Order on WhatsApp</span></a>
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fas fa-chevron-up"></i></button>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+        <a href="index.html" onclick="closeMenu()">Home</a>
+        <a href="products.html" onclick="closeMenu()">Shop</a>
+        <a href="about.html" onclick="closeMenu()">About</a>
+        <a href="contact.html" onclick="closeMenu()">Contact</a>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.PNG" alt="Promise Works" class="nav-logo-img" />
+                <div class="nav-logo-text"><span class="n1">Promise <em>Works</em></span><span class="n2">Gift Hamper Online Shopping</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger"
+                onclick="toggleMenu()"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- ════════ HERO ════════ -->
+    <section id="hero">
+        <!-- LEFT -->
+        <div class="hero-left" style="animation:fadeUp .8s ease both">
+            <div class="hero-badge"><i class="fas fa-heart"></i> Handmade with Love</div>
+            <h1 class="hero-h1">Promise <em>Works</em></h1>
+            <p class="hero-tagline">A Personal Promise Of Love In<br />Every Present.</p>
+            <p class="hero-desc">Thoughtfully crafted gifts — embroidered keepsakes, dried bouquets and personalized
+                hampers, made by hand for the people you cherish.</p>
+            <div class="hero-btns">
+                <a href="products.html" class="btn-dark">Shop Now &nbsp;→</a>
+                <a href="https://wa.me/918870855033?text=Hi+I+want+to+order+from+Promise+Works" target="_blank"
+                    class="btn-outline" style="gap:.5rem"><i class="fab fa-whatsapp" style="color:var(--wa)"></i> Order
+                    on WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- RIGHT: Product Slideshow -->
+        <div class="hero-right" style="animation:fadeUp .9s .15s ease both">
+            <div class="hero-slideshow" id="heroSlideshow">
+                <!-- Slides -->
+                <div class="hero-slide active"><img src="images/flower.jpeg" alt="Flower Bouquet" loading="eager" /></div>
+                <div class="hero-slide"><img src="images/bottle-vase.jpg" alt="Bottle Flower Vase" loading="lazy" /></div>
+                <div class="hero-slide"><img src="images/gift-hamper.jpeg" alt="Customized Gift Hamper" loading="lazy" /></div>
+                <div class="hero-slide"><img src="images/kerchief.jpg" alt="Hand Embroidered Kerchief" loading="lazy" /></div>
+                <div class="hero-slide"><img src="images/embroidered-shirt.jpeg" alt="Hand Embroidered Shirt" loading="lazy" /></div>
+                <div class="hero-slide"><img src="images/phone-case.jpeg" alt="Hand Embroidered Phone Case" loading="lazy" /></div>
+
+                <!-- Logo badge overlay -->
+                <div class="hero-logo-badge">
+                    <span class="lb-name">Promise<br><em>Works</em></span>
+                    <span class="lb-sub">Handmade</span>
+                </div>
+
+                <!-- Arrows -->
+                <button class="slide-arrow prev" onclick="slideMove(-1)" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                <button class="slide-arrow next" onclick="slideMove(1)" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+
+                <!-- Dots -->
+                <div class="slide-dots" id="slideDots"></div>
+            </div>
+
+            <!-- Made by hand badge -->
+            <div class="hero-made-badge">
+                <div class="hb-dot"></div>
+                <div class="hb-text">Made By Hand<br /><span style="font-weight:400;color:var(--muted)">with Love</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ WHY US ════════ -->
+    <section id="why">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom:2.5rem">
+                <h2 class="section-title">Why Promise Works?</h2>
+                <p class="section-sub">More than a gift — a heartfelt promise</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal">
+                    <div class="why-icon"><i class="fas fa-hands"></i></div>
+                    <h4>Handcrafted</h4>
+                    <p>Every item made with patience and care by hand — no shortcuts.</p>
+                </div>
+                <div class="why-card reveal" style="transition-delay:.07s">
+                    <div class="why-icon"><i class="fas fa-paintbrush"></i></div>
+                    <h4>Customizable</h4>
+                    <p>Names, colors, designs — we make each piece uniquely yours.</p>
+                </div>
+                <div class="why-card reveal" style="transition-delay:.14s">
+                    <div class="why-icon"><i class="fas fa-lock"></i></div>
+                    <h4>Secure Payment</h4>
+                    <p>Pay safely via UPI, cards or net banking through Razorpay.</p>
+                </div>
+                <div class="why-card reveal" style="transition-delay:.21s">
+                    <div class="why-icon"><i class="fas fa-truck"></i></div>
+                    <h4>Fast Delivery</h4>
+                    <p>Delivered with care across India within 5–7 business days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ FEATURED PRODUCTS ════════ -->
+    <section id="featured">
+        <div class="container">
+            <div class="featured-header reveal">
+                <div>
+                    <h2 class="section-title">Our Collection</h2>
+                    <p class="section-sub" style="margin-bottom:0">Each piece lovingly crafted by hand, just for you</p>
+                </div>
+                <a href="products.html" class="btn-outline" style="flex-shrink:0">View All <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid" id="featuredGrid"></div>
+        </div>
+    </section>
+
+    <!-- ════════ TESTIMONIALS ════════ -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom:2rem">
+                <h2 class="section-title">Customer Love</h2>
+                <p class="section-sub">Real words from real hearts</p>
+            </div>
+            <div class="divider reveal"><span>💌</span></div>
+
+            <!-- Dynamic reviews -->
+            <div class="testi-grid" id="reviewGrid"></div>
+            <div class="review-empty" id="reviewEmpty">
+                <span class="re-icon">💬</span>
+                <p>No reviews yet — be the first to share your experience!</p>
+            </div>
+
+            <!-- Write a review -->
+            <div class="text-center" style="margin-top:2.5rem">
+                <button class="btn-write-review" id="writeReviewBtn" onclick="toggleReviewForm()">
+                    <i class="fas fa-pen"></i> Write a Review
+                </button>
+            </div>
+
+            <!-- Review form -->
+            <div class="review-form-wrap" id="reviewFormWrap">
+                <div class="review-form-inner">
+                    <h3>Share Your Experience 🌸</h3>
+                    <div class="star-picker" id="starPicker">
+                        <span class="sp-star" data-v="1">★</span>
+                        <span class="sp-star" data-v="2">★</span>
+                        <span class="sp-star" data-v="3">★</span>
+                        <span class="sp-star" data-v="4">★</span>
+                        <span class="sp-star" data-v="5">★</span>
+                    </div>
+                    <input type="hidden" id="reviewRating" value="0" />
+                    <div class="rf-row">
+                        <div class="rf-group"><label>Your Name *</label><input type="text" id="rName" placeholder="e.g. Priya S." /></div>
+                        <div class="rf-group"><label>City / Location</label><input type="text" id="rLoc" placeholder="e.g. Chennai" /></div>
+                    </div>
+                    <div class="rf-group"><label>Your Review *</label><textarea id="rText" rows="4" placeholder="Tell us about your experience..."></textarea></div>
+                    <button class="btn-submit-review" onclick="submitReview()"><i class="fas fa-heart"></i> Submit Review</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ CTA BANNER ════════ -->
+    <section id="cta-banner">
+        <div class="container">
+            <h2>Make Someone's Day Special 🌸</h2>
+            <p>"A handmade gift says what words sometimes cannot."</p>
+            <div class="cta-btns">
+                <a href="products.html" class="btn-light"><i class="fas fa-shopping-bag"></i> Browse Products</a>
+                <a href="https://wa.me/918870855033?text=Hi+I+want+to+order+from+Promise+Works" target="_blank"
+                    class="btn-wa"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+
+                    <div class="fn">Promise <em>Works</em></div><span class="ft">Gift Hamper Online Shopping</span>
+                    <p>Creating handmade, customized gifts filled with love and personal meaning since 2022.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/promise_works." target="_blank" class="s-ico"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/918870855033" target="_blank" class="s-ico"><i
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="tel:+918870855033" class="s-ico"><i class="fas fa-phone-alt"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+918870855033">88708 55033</a></li>
+                        <li><a href="tel:+918807773732">88077 73732</a></li>
+                        <li><a href="https://www.instagram.com/promise_works." target="_blank">@promise_works.</a></li>
+                        <li><a href="https://wa.me/918870855033" target="_blank">WhatsApp Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 <span>Promise Works</span>. All rights reserved. Made with <span>♥</span></p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="js/main.js"></script>
+    <script>
+        function renderFeatured() {
+            const picks = [PRODUCTS[2], PRODUCTS[5], PRODUCTS[0], PRODUCTS[1], PRODUCTS[3], PRODUCTS[4]];
+            document.getElementById("featuredGrid").innerHTML = picks.map(p => `
+    <article class="product-card reveal">
+      ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ""}
+      <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy"/></div>
+      <div class="card-body">
+        <h3 class="card-name">${p.name}</h3>
+        <p class="card-desc">${p.desc}</p>
+        <div class="card-footer">
+          <a href="https://wa.me/918870855033?text=Hi+I+want+to+order+${encodeURIComponent(p.name)}+from+Promise+Works" target="_blank" class="btn-order-wa"><i class="fab fa-whatsapp"></i> Order Now</a>
+        </div>
+      </div>
+    </article>`).join("");
+            observeReveal();
+        }
+        // ── Review System ──────────────────────────
+        function loadReviews() {
+            const reviews = JSON.parse(localStorage.getItem('pw_reviews') || '[]');
+            const grid = document.getElementById('reviewGrid');
+            const empty = document.getElementById('reviewEmpty');
+            if (!grid) return;
+            if (!reviews.length) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
+            empty.style.display = 'none';
+            grid.innerHTML = reviews.map((r, i) => `
+                <div class="testi-card reveal" style="transition-delay:${i * 0.07}s">
+                    <div class="testi-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+                    <p class="testi-text">"${r.text}"</p>
+                    <div class="testi-author">${r.name}</div>
+                    ${r.loc ? `<div class="testi-loc">${r.loc}</div>` : ''}
+                </div>`).join('');
+            observeReveal();
+        }
+        function toggleReviewForm() {
+            const wrap = document.getElementById('reviewFormWrap');
+            const btn = document.getElementById('writeReviewBtn');
+            const isOpen = wrap.classList.toggle('open');
+            btn.innerHTML = isOpen ? '<i class="fas fa-times"></i> Cancel' : '<i class="fas fa-pen"></i> Write a Review';
+        }
+        function submitReview() {
+            const name = document.getElementById('rName').value.trim();
+            const loc  = document.getElementById('rLoc').value.trim();
+            const text = document.getElementById('rText').value.trim();
+            const rating = parseInt(document.getElementById('reviewRating').value);
+            if (!name)   { showToast('Please enter your name.'); return; }
+            if (!text)   { showToast('Please write your review.'); return; }
+            if (!rating) { showToast('Please select a star rating.'); return; }
+            // Save locally
+            const reviews = JSON.parse(localStorage.getItem('pw_reviews') || '[]');
+            reviews.unshift({ name, loc, text, rating });
+            localStorage.setItem('pw_reviews', JSON.stringify(reviews));
+            loadReviews();
+            toggleReviewForm();
+            document.getElementById('rName').value = '';
+            document.getElementById('rLoc').value  = '';
+            document.getElementById('rText').value = '';
+            document.getElementById('reviewRating').value = '0';
+            document.querySelectorAll('.sp-star').forEach(s => s.classList.remove('lit'));
+            showToast('✓ Thank you for your review!');
+            // Send to server (email to promiseworks992@gmail.com)
+            fetch('http://localhost:3000/submit-review', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, loc, rating, text })
+            }).catch(() => {}); // Silently fail if server is offline
+        }
+        // Star picker
+        (function() {
+            const stars = document.querySelectorAll('.sp-star');
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const val = parseInt(star.dataset.v);
+                    document.getElementById('reviewRating').value = val;
+                    stars.forEach(s => s.classList.toggle('lit', parseInt(s.dataset.v) <= val));
+                });
+                star.addEventListener('mouseover', () => {
+                    const val = parseInt(star.dataset.v);
+                    stars.forEach(s => s.classList.toggle('lit', parseInt(s.dataset.v) <= val));
+                });
+                star.addEventListener('mouseout', () => {
+                    const val = parseInt(document.getElementById('reviewRating').value);
+                    stars.forEach(s => s.classList.toggle('lit', parseInt(s.dataset.v) <= val));
+                });
+            });
+        })();
+        loadReviews();
+
+        initNavbar(true);
+        renderFeatured();
+
+        observeReveal();
+
+        // ── Hero Slideshow ──
+        (function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dotsContainer = document.getElementById('slideDots');
+            let current = 0, timer;
+
+            // Build dots
+            slides.forEach((_, i) => {
+                const d = document.createElement('button');
+                d.className = 'slide-dot' + (i === 0 ? ' active' : '');
+                d.setAttribute('aria-label', 'Slide ' + (i + 1));
+                d.onclick = () => goTo(i);
+                dotsContainer.appendChild(d);
+            });
+
+            function goTo(n) {
+                slides[current].classList.remove('active');
+                dotsContainer.children[current].classList.remove('active');
+                current = (n + slides.length) % slides.length;
+                slides[current].classList.add('active');
+                dotsContainer.children[current].classList.add('active');
+                resetTimer();
+            }
+
+            window.slideMove = (dir) => goTo(current + dir);
+
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(() => goTo(current + 1), 3500);
+            }
+
+            resetTimer();
+        })();
+    </script>
+</body>
+
+</html>

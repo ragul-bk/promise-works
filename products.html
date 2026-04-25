@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description"
+        content="Shop handmade gifts at Promise Works – bottle vases, embroidered shirts, flower bouquets, phone cases, kerchiefs and gift hampers." />
+    <title>Shop – Promise Works</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="images/logo.PNG" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+        .shop-wrap {
+            padding: 4rem 0 5.5rem;
+            background: var(--white)
+        }
+
+        /* Filter bar */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem
+        }
+
+        .filter-btn {
+            padding: .4rem 1rem;
+            border: 1.5px solid var(--beige-mid);
+            border-radius: 99px;
+            background: var(--cream);
+            color: var(--brown);
+            font-size: .8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--tr);
+            font-family: 'Poppins', sans-serif
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--tan);
+            border-color: var(--tan);
+            color: var(--white)
+        }
+
+        .sort-select {
+            margin-left: auto;
+            padding: .4rem .9rem;
+            border: 1.5px solid var(--beige-mid);
+            border-radius: var(--r-sm);
+            background: var(--cream);
+            color: var(--brown);
+            font-size: .8rem;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            outline: none
+        }
+
+        .sort-select:focus {
+            border-color: var(--tan)
+        }
+
+        .product-count {
+            font-size: .82rem;
+            color: var(--text-light)
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="toast" id="toast"></div>
+    <a href="https://wa.me/918870855033?text=Hi+I+want+to+know+more+about+Promise+Works" target="_blank"
+        class="wa-float"><i class="fab fa-whatsapp"></i><span>Order on WhatsApp</span></a>
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fas fa-chevron-up"></i></button>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+        <a href="index.html" onclick="closeMenu()">Home</a>
+        <a href="products.html" onclick="closeMenu()">Shop</a>
+        <a href="about.html" onclick="closeMenu()">About</a>
+        <a href="contact.html" onclick="closeMenu()">Contact</a>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.PNG" alt="Promise Works" class="nav-logo-img" />
+                <div class="nav-logo-text"><span class="n1">Promise <em>Works</em></span><span class="n2">Gift Hamper Online Shopping</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button class="hamburger" id="hamburger"
+                onclick="toggleMenu()"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-circle c1"></div>
+        <div class="page-hero-circle c2"></div>
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Shop</span></div>
+            <h1>Our <span>Collection</span></h1>
+            <p>Handcrafted with love, delivered with care</p>
+        </div>
+    </section>
+
+    <!-- SHOP -->
+    <section class="shop-wrap">
+        <div class="container">
+            <div class="filter-bar reveal">
+                <span class="product-count" id="productCount">Showing 6 products</span>
+                <button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+                <button class="filter-btn" onclick="filterProducts('embroidery',this)">Embroidery</button>
+                <button class="filter-btn" onclick="filterProducts('flowers',this)">Flowers</button>
+                <button class="filter-btn" onclick="filterProducts('hamper',this)">Hampers</button>
+                <select class="sort-select" onchange="sortProducts(this.value)">
+                    <option value="default">Sort by: Default</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                </select>
+            </div>
+            <div class="products-grid" id="shopGrid"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+
+                    <div class="fn">Promise Works</div><span class="ft">Gift Hamper Online Shopping</span>
+                    <p>Creating handmade, customized gifts filled with love and personal meaning.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/promise_works." target="_blank" class="s-ico"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/918870855033" target="_blank" class="s-ico"><i
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="tel:+918870855033" class="s-ico"><i class="fas fa-phone-alt"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+918870855033">88708 55033</a></li>
+                        <li><a href="tel:+918807773732">88077 73732</a></li>
+                        <li><a href="https://www.instagram.com/promise_works." target="_blank">@promise_works.</a></li>
+                        <li><a href="https://wa.me/918870855033" target="_blank">WhatsApp Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 <span>Promise Works</span>. All rights reserved. Made with <span>♥</span></p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script src="js/main.js"></script>
+    <script>
+        const CATEGORIES = { 1: 'flowers', 2: 'embroidery', 3: 'flowers', 4: 'embroidery', 5: 'embroidery', 6: 'hamper' };
+        let currentFilter = 'all';
+        let currentSort = 'default';
+
+        function renderShop(prods) {
+            const grid = document.getElementById("shopGrid");
+            const count = document.getElementById("productCount");
+            count.textContent = `Showing ${prods.length} product${prods.length !== 1 ? 's' : ''}`;
+            grid.innerHTML = prods.map(p => `
+    <article class="product-card reveal">
+      ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ""}
+      <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy"/></div>
+      <div class="card-body">
+        <h3 class="card-name">${p.name}</h3>
+        <p class="card-desc">${p.desc}</p>
+        <div class="card-footer">
+          <a href="https://wa.me/918870855033?text=Hi+I+want+to+order+${encodeURIComponent(p.name)}+from+Promise+Works" target="_blank" class="btn-order-wa"><i class="fab fa-whatsapp"></i> Order Now</a>
+        </div>
+      </div>
+    </article>`).join("");
+            observeReveal();
+        }
+
+        function getFiltered() {
+            let prods = [...PRODUCTS];
+            if (currentFilter !== 'all') prods = prods.filter(p => CATEGORIES[p.id] === currentFilter);
+            if (currentSort === 'price-asc') prods.sort((a, b) => a.price - b.price);
+            if (currentSort === 'price-desc') prods.sort((a, b) => b.price - a.price);
+            return prods;
+        }
+
+        function filterProducts(cat, btn) {
+            currentFilter = cat;
+            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderShop(getFiltered());
+        }
+
+        function sortProducts(val) {
+            currentSort = val;
+            renderShop(getFiltered());
+        }
+
+        initNavbar(false);
+        renderShop(getFiltered());
+        observeReveal();
+    </script>
+</body>
+
+</html>

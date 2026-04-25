@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description"
+        content="Contact Promise Works – reach us on Instagram, WhatsApp or phone to place your handmade gift order." />
+    <title>Contact – Promise Works</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="images/logo.PNG" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .contact-section {
+            padding: 5.5rem 0;
+            background: var(--white)
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 1.4fr;
+            gap: 3.5rem;
+            align-items: start
+        }
+
+        /* Info side */
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            color: var(--brown);
+            margin-bottom: .5rem
+        }
+
+        .contact-info .sub {
+            color: var(--text-light);
+            font-size: .88rem;
+            margin-bottom: 2rem;
+            line-height: 1.7
+        }
+
+        .contact-card-sm {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: var(--cream);
+            border: 1px solid var(--beige);
+            border-radius: var(--r-sm);
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--tr)
+        }
+
+        .contact-card-sm:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 24px var(--shadow-md);
+            background: var(--white)
+        }
+
+        .cc-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0
+        }
+
+        .cc-icon.ig {
+            background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+            color: var(--white)
+        }
+
+        .cc-icon.ph {
+            background: linear-gradient(135deg, var(--tan), var(--tan-dark));
+            color: var(--white)
+        }
+
+        .cc-icon.wa {
+            background: var(--wa);
+            color: var(--white)
+        }
+
+        .cc-text h4 {
+            font-size: .84rem;
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: .1rem
+        }
+
+        .cc-text p {
+            font-size: .82rem;
+            color: var(--text-light);
+            line-height: 1.5
+        }
+
+        .cc-text p strong {
+            color: var(--brown-dark)
+        }
+
+        /* Hours */
+        .hours-box {
+            background: var(--cream);
+            border: 1px solid var(--beige);
+            border-radius: var(--r-sm);
+            padding: 1.2rem 1.4rem;
+            margin-top: .5rem
+        }
+
+        .hours-box h4 {
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--brown);
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            margin-bottom: .7rem
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: .8rem;
+            color: var(--text-light);
+            padding: .2rem 0;
+            border-bottom: 1px solid var(--beige)
+        }
+
+        .hours-row:last-child {
+            border-bottom: none
+        }
+
+        .hours-row span:last-child {
+            color: var(--brown);
+            font-weight: 500
+        }
+
+        /* Form side */
+        .contact-form-wrap {
+            background: var(--cream);
+            border-radius: var(--r);
+            padding: 2.2rem;
+            border: 1px solid var(--beige);
+            box-shadow: 0 4px 30px var(--shadow)
+        }
+
+        .contact-form-wrap h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--brown);
+            font-size: 1.25rem;
+            margin-bottom: .3rem
+        }
+
+        .contact-form-wrap .sub {
+            font-size: .82rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem
+        }
+
+        .form-group {
+            margin-bottom: 1rem
+        }
+
+        .form-group label {
+            display: block;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: .3rem;
+            letter-spacing: .03em
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: .65rem .95rem;
+            border: 1.5px solid var(--beige-mid);
+            border-radius: var(--r-sm);
+            font-size: .86rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            outline: none;
+            transition: border var(--tr), box-shadow var(--tr)
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--tan);
+            box-shadow: 0 0 0 3px rgba(201, 168, 124, .15)
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem
+        }
+
+        .btn-send {
+            width: 100%;
+            padding: .88rem;
+            background: linear-gradient(135deg, var(--tan), var(--tan-dark));
+            color: var(--white);
+            border: none;
+            border-radius: 99px;
+            font-size: .92rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--tr);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem
+        }
+
+        .btn-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(168, 132, 90, .38)
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            color: var(--brown)
+        }
+
+        .form-success i {
+            font-size: 2.5rem;
+            color: var(--tan);
+            display: block;
+            margin-bottom: .7rem
+        }
+
+        .form-success h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: .4rem
+        }
+
+        .form-success p {
+            font-size: .85rem;
+            color: var(--text-light)
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 5rem 0;
+            background: linear-gradient(160deg, var(--beige)0%, var(--cream)100%)
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-top: 1rem
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--beige);
+            border-radius: var(--r-sm);
+            overflow: hidden
+        }
+
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 1.3rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: .88rem;
+            color: var(--brown);
+            transition: background var(--tr)
+        }
+
+        .faq-q:hover {
+            background: var(--cream)
+        }
+
+        .faq-q i {
+            color: var(--tan);
+            transition: transform var(--tr);
+            font-size: .8rem
+        }
+
+        .faq-a {
+            display: none;
+            padding: 0 1.3rem 1.1rem;
+            font-size: .82rem;
+            color: var(--text-light);
+            line-height: 1.7
+        }
+
+        .faq-item.open .faq-a {
+            display: block
+        }
+
+        .faq-item.open .faq-q i {
+            transform: rotate(180deg)
+        }
+
+        @media(max-width:900px) {
+            .contact-layout {
+                grid-template-columns: 1fr
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media(max-width:540px) {
+            .form-row {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="toast" id="toast"></div>
+    <a href="https://wa.me/918870855033?text=Hi+I+want+to+know+more+about+Promise+Works" target="_blank"
+        class="wa-float"><i class="fab fa-whatsapp"></i><span>Order on WhatsApp</span></a>
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
+            class="fas fa-chevron-up"></i></button>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="closeMenu()"><i class="fas fa-times"></i></button>
+        <a href="index.html" onclick="closeMenu()">Home</a>
+        <a href="products.html" onclick="closeMenu()">Shop</a>
+        <a href="about.html" onclick="closeMenu()">About</a>
+        <a href="contact.html" onclick="closeMenu()">Contact</a>
+    </div>
+
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.PNG" alt="Promise Works" class="nav-logo-img" />
+                <div class="nav-logo-text"><span class="n1">Promise <em>Works</em></span><span class="n2">Gift Hamper Online Shopping</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="https://wa.me/918870855033?text=Hi+I+want+to+order" target="_blank" class="nav-wa-btn"><i
+                            class="fab fa-whatsapp"></i> WhatsApp</a></li>
+            </ul>
+            <button class="nav-cart-btn" onclick="openCart()"><i class="fas fa-shopping-bag"></i> Cart<span
+                    class="cart-badge" id="cartBadge">0</span></button>
+            <button class="hamburger" id="hamburger"
+                onclick="toggleMenu()"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="page-hero-circle c1"></div>
+        <div class="page-hero-circle c2"></div>
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
+            <h1>Get in <span>Touch</span></h1>
+            <p>We'd love to help you find the perfect gift</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-layout">
+                <!-- LEFT: Info -->
+                <div class="contact-info reveal">
+                    <h2>Let's Connect</h2>
+                    <p class="sub">Whether you want to place an order, ask about customization, or just say hello —
+                        we're here for you, always.</p>
+
+                    <a href="https://www.instagram.com/promise_works." target="_blank" class="contact-card-sm">
+                        <div class="cc-icon ig"><i class="fab fa-instagram"></i></div>
+                        <div class="cc-text">
+                            <h4>Instagram</h4>
+                            <p><strong>@promise_works.</strong><br />Follow us for daily inspiration &amp; updates</p>
+                        </div>
+                    </a>
+                    <a href="tel:+918870855033" class="contact-card-sm">
+                        <div class="cc-icon ph"><i class="fas fa-phone-alt"></i></div>
+                        <div class="cc-text">
+                            <h4>Phone / Call</h4>
+                            <p><strong>88708 55033</strong><br /><strong>88077 73732</strong></p>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/918870855033?text=Hi+I+want+to+order+from+Promise+Works" target="_blank"
+                        class="contact-card-sm">
+                        <div class="cc-icon wa"><i class="fab fa-whatsapp"></i></div>
+                        <div class="cc-text">
+                            <h4>WhatsApp</h4>
+                            <p><strong>88708 55033</strong><br />Quickest way to place or discuss an order</p>
+                        </div>
+                    </a>
+
+                    <div class="hours-box">
+                        <h4>⏰ Working Hours</h4>
+                        <div class="hours-row"><span>Monday – Friday</span><span>9 AM – 7 PM</span></div>
+                        <div class="hours-row"><span>Saturday</span><span>9 AM – 5 PM</span></div>
+                        <div class="hours-row"><span>Sunday</span><span>By Appointment</span></div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Form -->
+                <div class="contact-form-wrap reveal" style="transition-delay:.1s">
+                    <h3>Send Us a Message</h3>
+                    <p class="sub">Fill in your details and we'll get back to you within 24 hours.</p>
+                    <form id="contactForm" onsubmit="sendContactForm(event)">
+                        <div class="form-row">
+                            <div class="form-group"><label>Your Name *</label><input type="text" id="fName"
+                                    placeholder="Priya Sharma" required /></div>
+                            <div class="form-group"><label>Email *</label><input type="email" id="fEmail"
+                                    placeholder="you@gmail.com" required /></div>
+                        </div>
+                        <div class="form-group"><label>Phone</label><input type="tel" id="fPhone"
+                                placeholder="+91 98765 43210" /></div>
+                        <div class="form-group">
+                            <label>I'm interested in *</label>
+                            <select id="fProduct" required>
+                                <option value="">Select a product…</option>
+                                <option>Bottle Flower Vase</option>
+                                <option>Hand Embroidered Shirt</option>
+                                <option>Flower Bouquet</option>
+                                <option>Hand Embroidered Phone Case</option>
+                                <option>Customized Hand Embroidered Kerchief</option>
+                                <option>Customized Gift Hamper</option>
+                                <option>General Enquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>Message *</label><textarea id="fMsg"
+                                placeholder="Tell us about your order, customization requirements, occasion, etc."
+                                required></textarea></div>
+                        <button type="submit" class="btn-send"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                    <div class="form-success" id="formSuccess">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Message Sent!</h3>
+                        <p>Thank you for reaching out. We'll get back to you within 24 hours.<br />You can also WhatsApp
+                            us for a quick response!</p>
+                        <a href="https://wa.me/918870855033" target="_blank" class="btn-wa"
+                            style="display:inline-flex;margin-top:1rem"><i class="fab fa-whatsapp"></i> Chat Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="text-center reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-sub">Everything you need to know</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">How long does delivery take?<i
+                            class="fas fa-chevron-down"></i></div>
+                    <div class="faq-a">Typically 5–7 business days. For urgent orders, message us on WhatsApp and we'll
+                        do our best!</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">Can I customize the products?<i
+                            class="fas fa-chevron-down"></i></div>
+                    <div class="faq-a">Absolutely! All our products are fully customizable — names, colors, designs,
+                        messages. Just let us know your preferences.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">What payment methods do you accept?<i
+                            class="fas fa-chevron-down"></i></div>
+                    <div class="faq-a">We accept UPI, credit/debit cards, net banking, and all major wallets via
+                        Razorpay. You can also pay via WhatsApp link.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">Do you ship outside Tamil Nadu?<i
+                            class="fas fa-chevron-down"></i></div>
+                    <div class="faq-a">Yes! We ship across India. For international orders, please contact us on
+                        WhatsApp to discuss shipping options.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">What if I'm not satisfied?<i
+                            class="fas fa-chevron-down"></i></div>
+                    <div class="faq-a">Your satisfaction is our priority. If anything isn't right, contact us within 48
+                        hours of delivery and we'll make it right.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">Can I place bulk / corporate orders?<i
+                            class="fas fa-chevron-down"></i></div>
+                    <div class="faq-a">Yes! We love bulk orders for events, weddings, and corporate gifting. Contact us
+                        on WhatsApp for special pricing.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+
+                    <div class="fn">Promise Works</div><span class="ft">Gift Hamper Online Shopping</span>
+                    <p>Creating handmade, customized gifts filled with love and personal meaning.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/promise_works." target="_blank" class="s-ico"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/918870855033" target="_blank" class="s-ico"><i
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="tel:+918870855033" class="s-ico"><i class="fas fa-phone-alt"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+918870855033">88708 55033</a></li>
+                        <li><a href="tel:+918807773732">88077 73732</a></li>
+                        <li><a href="https://www.instagram.com/promise_works." target="_blank">@promise_works.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 <span>Promise Works</span>. All rights reserved. Made with <span>♥</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART DRAWER -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-head">
+            <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3><button class="cart-close" onclick="closeCart()"><i
+                    class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-body" id="cartBody"></div>
+        <div class="cart-foot" id="cartFoot" style="display:none">
+            <div class="cart-total-row"><span>Subtotal</span><strong id="cartTotal">₹0</strong></div>
+            <button class="btn-checkout" onclick="openCheckout()">Checkout <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
+    <div class="modal-overlay" id="checkoutOverlay">
+        <div class="modal">
+            <div class="modal-head">
+                <h3>🧾 Checkout</h3><button class="modal-close" onclick="closeCheckout()"><i
+                        class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="order-summary-mini" id="orderSummaryMini"></div>
+                <form id="checkoutForm" onsubmit="handleCheckout(event)">
+                    <div class="form-row">
+                        <div class="form-group"><label>Full Name *</label><input id="cName" type="text" required />
+                        </div>
+                        <div class="form-group"><label>Email *</label><input id="cEmail" type="email" required /></div>
+                    </div>
+                    <div class="form-group"><label>Phone *</label><input id="cPhone" type="tel" required /></div>
+                    <div class="form-group"><label>Delivery Address *</label><textarea id="cAddress" rows="3"
+                            required></textarea></div>
+                    <div class="secure-note"><i class="fas fa-lock"></i> Secured by Razorpay</div>
+                    <button type="submit" class="btn-pay" id="payBtn"><i class="fas fa-credit-card"></i> Pay with
+                        Razorpay</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-overlay" id="successOverlay">
+        <div class="success-modal">
+            <div class="s-icon">🎁</div>
+            <h2>Order Confirmed!</h2>
+            <p>Thank you! A confirmation email has been sent.</p>
+            <p id="successPid" class="success-pid"></p>
+            <a href="products.html" class="btn-primary" style="margin-top:1.5rem;display:inline-flex"
+                onclick="closeSuccess()"><i class="fas fa-shopping-bag"></i> Continue Shopping</a>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        function sendContactForm(e) {
+            e.preventDefault();
+            const name = document.getElementById("fName").value;
+            const product = document.getElementById("fProduct").value;
+            const msg = document.getElementById("fMsg").value;
+            const phone = document.getElementById("fPhone").value;
+            // Open WhatsApp with the message
+            const text = `Hi, I'm ${name}. I'm interested in: ${product}.\n\nMessage: ${msg}\n\nPhone: ${phone || 'N/A'}`;
+            window.open(`https://wa.me/918870855033?text=${encodeURIComponent(text)}`, "_blank");
+            document.getElementById("contactForm").style.display = "none";
+            document.getElementById("formSuccess").style.display = "block";
+        }
+
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            const wasOpen = item.classList.contains("open");
+            document.querySelectorAll(".faq-item").forEach(f => f.classList.remove("open"));
+            if (!wasOpen) item.classList.add("open");
+        }
+
+        initNavbar(false);
+        updateCartUI();
+        observeReveal();
+    </script>
+</body>
+
+</html>

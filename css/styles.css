@@ -259,8 +259,43 @@ body {
 .nav-logo-text .n2 {
   font-size: .58rem;
   color: var(--muted);
-  letter-spacing: .1em;
-  text-transform: uppercase
+  letter-spacing: .08em;
+  text-transform: lowercase;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  display: block;
+  line-height: 1.2
+}
+
+.nav-logo-text .n2 .dot {
+  color: var(--rose-mid);
+  font-style: normal;
+  margin: 0 .18em;
+  font-size: .72em;
+  vertical-align: middle
+}
+
+/* ── NAV WHATSAPP BUTTON ── */
+.nav-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .44rem 1.1rem;
+  background: var(--wa);
+  color: var(--white) !important;
+  border-radius: 99px;
+  font-size: .82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--tr);
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap
+}
+
+.nav-wa-btn:hover {
+  background: var(--wa-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, .35)
 }
 
 .nav-links {
@@ -648,6 +683,13 @@ body {
   object-position: center top;
   transition: transform .55s ease;
   display: block
+}
+
+.card-img img.img-contain,
+.hero-slide img.img-contain {
+  object-fit: contain;
+  object-position: center center;
+  background: var(--bg)
 }
 
 .product-card:hover .card-img img {
@@ -1175,12 +1217,23 @@ footer {
 }
 
 .footer-brand .ft {
-  font-size: .58rem;
+  font-size: .62rem;
   color: var(--rose-mid);
-  letter-spacing: .12em;
-  text-transform: uppercase;
+  letter-spacing: .06em;
+  text-transform: lowercase;
   margin-bottom: .9rem;
-  display: block
+  display: block;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  opacity: .88
+}
+
+.footer-brand .ft .dot {
+  color: var(--rose);
+  font-style: normal;
+  margin: 0 .2em;
+  font-size: .8em;
+  vertical-align: middle
 }
 
 .footer-brand p {

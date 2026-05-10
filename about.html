@@ -41,7 +41,8 @@
         .story-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover
+            object-fit: cover;
+            object-position: center bottom;
         }
 
         .story-text .section-title {
@@ -253,7 +254,7 @@
         <div class="container nav-inner">
             <a href="index.html" class="nav-logo">
                 <img src="images/logo.PNG" alt="Promise Works" class="nav-logo-img" />
-                <div class="nav-logo-text"><span class="n1">Promise <em>Works</em></span><span class="n2">Gift Hamper Online Shopping</span></div>
+                <div class="nav-logo-text"><span class="n1">Promise <em>Works</em></span><span class="n2">your design<span class="dot">·</span>your wish<span class="dot">·</span>our threads</span></div>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -263,8 +264,7 @@
                 <li><a href="https://wa.me/918870855033?text=Hi+I+want+to+order" target="_blank" class="nav-wa-btn"><i
                             class="fab fa-whatsapp"></i> WhatsApp</a></li>
             </ul>
-            <button class="nav-cart-btn" onclick="openCart()"><i class="fas fa-shopping-bag"></i> Cart<span
-                    class="cart-badge" id="cartBadge">0</span></button>
+            <a href="https://wa.me/918870855033?text=Hi+I+want+to+order+from+Promise+Works" target="_blank" class="nav-wa-btn"><i class="fab fa-whatsapp"></i> Order Now</a>
             <button class="hamburger" id="hamburger"
                 onclick="toggleMenu()"><span></span><span></span><span></span></button>
         </div>
@@ -284,8 +284,8 @@
         <div class="container">
             <div class="story-grid">
                 <div class="story-img reveal">
-                    <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=700&q=80"
-                        alt="Promise Works handmade gifts" loading="lazy" />
+                    <img src="images/shirt 6.PNG"
+                        alt="Promise Works hand embroidered shirt" loading="lazy" />
                 </div>
                 <div class="story-text reveal" style="transition-delay:.1s">
                     <h2 class="section-title">Who We Are</h2>
@@ -322,29 +322,7 @@
         </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <div class="stat-num">500+</div>
-                    <div class="stat-label">Happy Customers</div>
-                </div>
-                <div class="stat-item reveal" style="transition-delay:.07s">
-                    <div class="stat-num">1000+</div>
-                    <div class="stat-label">Gifts Crafted</div>
-                </div>
-                <div class="stat-item reveal" style="transition-delay:.14s">
-                    <div class="stat-num">6+</div>
-                    <div class="stat-label">Product Categories</div>
-                </div>
-                <div class="stat-item reveal" style="transition-delay:.21s">
-                    <div class="stat-num">100%</div>
-                    <div class="stat-label">Handmade</div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- HOW IT WORKS -->
     <section class="how-section">
@@ -370,7 +348,7 @@
                     <div class="step-num">3</div>
                     <div class="step-icon"><i class="fas fa-credit-card"></i></div>
                     <h4>Pay Securely</h4>
-                    <p>Complete payment via Razorpay — UPI, cards, net banking, all accepted safely.</p>
+                    <p>Complete your payment securely via UPI or bank transfer after ordering on WhatsApp.</p>
                 </div>
                 <div class="step-card reveal" style="transition-delay:.24s">
                     <div class="step-num">4</div>
@@ -400,7 +378,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
 
-                    <div class="fn">Promise Works</div><span class="ft">Gift Hamper Online Shopping</span>
+                    <div class="fn">Promise Works</div><span class="ft">your design<span class="dot">·</span>your wish<span class="dot">·</span>our threads</span>
                     <p>Creating handmade, customized gifts filled with love and personal meaning.</p>
                     <div class="footer-socials">
                         <a href="https://www.instagram.com/promise_works." target="_blank" class="s-ico"><i
@@ -434,56 +412,8 @@
         </div>
     </footer>
 
-    <!-- CART DRAWER -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-    <div class="cart-drawer" id="cartDrawer">
-        <div class="cart-head">
-            <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3><button class="cart-close" onclick="closeCart()"><i
-                    class="fas fa-times"></i></button>
-        </div>
-        <div class="cart-body" id="cartBody"></div>
-        <div class="cart-foot" id="cartFoot" style="display:none">
-            <div class="cart-total-row"><span>Subtotal</span><strong id="cartTotal">₹0</strong></div>
-            <button class="btn-checkout" onclick="openCheckout()">Checkout <i class="fas fa-arrow-right"></i></button>
-        </div>
-    </div>
-    <div class="modal-overlay" id="checkoutOverlay">
-        <div class="modal">
-            <div class="modal-head">
-                <h3>🧾 Checkout</h3><button class="modal-close" onclick="closeCheckout()"><i
-                        class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="order-summary-mini" id="orderSummaryMini"></div>
-                <form id="checkoutForm" onsubmit="handleCheckout(event)">
-                    <div class="form-row">
-                        <div class="form-group"><label>Full Name *</label><input id="cName" type="text" required />
-                        </div>
-                        <div class="form-group"><label>Email *</label><input id="cEmail" type="email" required /></div>
-                    </div>
-                    <div class="form-group"><label>Phone *</label><input id="cPhone" type="tel" required /></div>
-                    <div class="form-group"><label>Delivery Address *</label><textarea id="cAddress" rows="3"
-                            required></textarea></div>
-                    <div class="secure-note"><i class="fas fa-lock"></i> Secured by Razorpay</div>
-                    <button type="submit" class="btn-pay" id="payBtn"><i class="fas fa-credit-card"></i> Pay with
-                        Razorpay</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal-overlay" id="successOverlay">
-        <div class="success-modal">
-            <div class="s-icon">🎁</div>
-            <h2>Order Confirmed!</h2>
-            <p>Thank you! A confirmation email has been sent.</p>
-            <p id="successPid" class="success-pid"></p>
-            <a href="products.html" class="btn-primary" style="margin-top:1.5rem;display:inline-flex"
-                onclick="closeSuccess()"><i class="fas fa-shopping-bag"></i> Continue Shopping</a>
-        </div>
-    </div>
-
     <script src="js/main.js"></script>
-    <script>initNavbar(false); updateCartUI(); observeReveal();</script>
+    <script>initNavbar(false); observeReveal();</script>
 </body>
 
 </html>

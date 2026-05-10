@@ -127,8 +127,8 @@
             height: 100%;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 16px 50px rgba(44, 24, 16, .22);
-            background: var(--border);
+            box-shadow: 0 16px 50px rgba(44, 24, 16, .28);
+            background: #1a1008; /* deep warm dark – makes embroidery pop */
         }
 
         .hero-slide {
@@ -137,6 +137,9 @@
             opacity: 0;
             transition: opacity .9s ease;
             pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-slide.active {
@@ -144,12 +147,22 @@
             pointer-events: auto;
         }
 
+        /* Shirt images – show full garment, embroidery always visible */
         .hero-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            object-position: center top;
+            object-fit: contain;          /* never crops – full shirt shown */
+            object-position: center center;
             display: block;
+            padding: 1rem;                /* breathing room around shirt */
+            box-sizing: border-box;
+            /* Subtle zoom on active to draw eye to embroidery */
+            transform: scale(1);
+            transition: transform 4s ease;
+        }
+
+        .hero-slide.active img {
+            transform: scale(1.04);       /* gentle zoom-in effect */
         }
 
         /* Logo badge on slideshow */
@@ -552,7 +565,7 @@
         <div class="container nav-inner">
             <a href="index.html" class="nav-logo">
                 <img src="images/logo.PNG" alt="Promise Works" class="nav-logo-img" />
-                <div class="nav-logo-text"><span class="n1">Promise <em>Works</em></span><span class="n2">Gift Hamper Online Shopping</span></div>
+                <div class="nav-logo-text"><span class="n1">Promise <em>Works</em></span><span class="n2">your design<span class="dot">·</span>your wish<span class="dot">·</span>our threads</span></div>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -586,13 +599,14 @@
         <!-- RIGHT: Product Slideshow -->
         <div class="hero-right" style="animation:fadeUp .9s .15s ease both">
             <div class="hero-slideshow" id="heroSlideshow">
-                <!-- Slides -->
-                <div class="hero-slide active"><img src="images/flower.jpeg" alt="Flower Bouquet" loading="eager" /></div>
-                <div class="hero-slide"><img src="images/bottle-vase.jpg" alt="Bottle Flower Vase" loading="lazy" /></div>
-                <div class="hero-slide"><img src="images/gift-hamper.jpeg" alt="Customized Gift Hamper" loading="lazy" /></div>
-                <div class="hero-slide"><img src="images/kerchief.jpg" alt="Hand Embroidered Kerchief" loading="lazy" /></div>
-                <div class="hero-slide"><img src="images/embroidered-shirt.jpeg" alt="Hand Embroidered Shirt" loading="lazy" /></div>
-                <div class="hero-slide"><img src="images/phone-case.jpeg" alt="Hand Embroidered Phone Case" loading="lazy" /></div>
+                <!-- Slides – Shirt Collection 1–7 -->
+                <div class="hero-slide active"><img src="images/shirt 1.jpeg" alt="Embroidered Shirt 1" loading="eager" /></div>
+                <div class="hero-slide"><img src="images/shirt 2.PNG" alt="Embroidered Shirt 2" loading="lazy" /></div>
+                <div class="hero-slide"><img src="images/shirt 3.PNG" alt="Embroidered Shirt 3" loading="lazy" /></div>
+                <div class="hero-slide"><img src="images/shirt 4.jpeg" alt="Embroidered Shirt 4" loading="lazy" /></div>
+                <div class="hero-slide"><img src="images/shirt 5.jpeg" alt="Embroidered Shirt 5" loading="lazy" /></div>
+                <div class="hero-slide"><img src="images/shirt 6.PNG" alt="Embroidered Shirt 6" loading="lazy" /></div>
+                <div class="hero-slide"><img src="images/shirt 7.PNG" alt="Embroidered Shirt 7" loading="lazy" /></div>
 
                 <!-- Logo badge overlay -->
                 <div class="hero-logo-badge">
@@ -637,7 +651,7 @@
                 <div class="why-card reveal" style="transition-delay:.14s">
                     <div class="why-icon"><i class="fas fa-lock"></i></div>
                     <h4>Secure Payment</h4>
-                    <p>Pay safely via UPI, cards or net banking through Razorpay.</p>
+                    <p>Order via WhatsApp and pay securely through UPI or bank transfer.</p>
                 </div>
                 <div class="why-card reveal" style="transition-delay:.21s">
                     <div class="why-icon"><i class="fas fa-truck"></i></div>
@@ -728,7 +742,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
 
-                    <div class="fn">Promise <em>Works</em></div><span class="ft">Gift Hamper Online Shopping</span>
+                    <div class="fn">Promise <em>Works</em></div><span class="ft">your design<span class="dot">·</span>your wish<span class="dot">·</span>our threads</span>
                     <p>Creating handmade, customized gifts filled with love and personal meaning since 2022.</p>
                     <div class="footer-socials">
                         <a href="https://www.instagram.com/promise_works." target="_blank" class="s-ico"><i
@@ -772,7 +786,7 @@
             document.getElementById("featuredGrid").innerHTML = picks.map(p => `
     <article class="product-card reveal">
       ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ""}
-      <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy"/></div>
+      <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy" ${p.img.includes('bottle-vase') ? 'class="img-contain"' : ''}/></div>
       <div class="card-body">
         <h3 class="card-name">${p.name}</h3>
         <p class="card-desc">${p.desc}</p>

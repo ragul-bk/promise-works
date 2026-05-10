@@ -97,7 +97,7 @@
         <div class="container nav-inner">
             <a href="index.html" class="nav-logo">
                 <img src="images/logo.PNG" alt="Promise Works" class="nav-logo-img" />
-                <div class="nav-logo-text"><span class="n1">Promise <em>Works</em></span><span class="n2">Gift Hamper Online Shopping</span></div>
+                <div class="nav-logo-text"><span class="n1">Promise <em>Works</em></span><span class="n2">your design<span class="dot">·</span>your wish<span class="dot">·</span>our threads</span></div>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -147,7 +147,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
 
-                    <div class="fn">Promise Works</div><span class="ft">Gift Hamper Online Shopping</span>
+                    <div class="fn">Promise Works</div><span class="ft">your design<span class="dot">·</span>your wish<span class="dot">·</span>our threads</span>
                     <p>Creating handmade, customized gifts filled with love and personal meaning.</p>
                     <div class="footer-socials">
                         <a href="https://www.instagram.com/promise_works." target="_blank" class="s-ico"><i
@@ -197,7 +197,7 @@
             grid.innerHTML = prods.map(p => `
     <article class="product-card reveal">
       ${p.badge ? `<span class="card-badge">${p.badge}</span>` : ""}
-      <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy"/></div>
+      <div class="card-img"><img src="${p.img}" alt="${p.name}" loading="lazy" ${p.img.includes('bottle-vase') ? 'class="img-contain"' : ''}/></div>
       <div class="card-body">
         <h3 class="card-name">${p.name}</h3>
         <p class="card-desc">${p.desc}</p>

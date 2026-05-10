@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "server.js",       "use": "@vercel/node"   },
+    { "src": "css/**",          "use": "@vercel/static" },
+    { "src": "js/**",           "use": "@vercel/static" },
+    { "src": "images/**",       "use": "@vercel/static" },
+    { "src": "*.html",          "use": "@vercel/static" },
+    { "src": "*.jpg",           "use": "@vercel/static" },
+    { "src": "*.jpeg",          "use": "@vercel/static" },
+    { "src": "*.png",           "use": "@vercel/static" },
+    { "src": "*.PNG",           "use": "@vercel/static" },
+    { "src": "*.HEIC",          "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/create-order",   "dest": "/server.js" },
+    { "src": "/verify-payment", "dest": "/server.js" },
+    { "src": "/submit-review",  "dest": "/server.js" },
+    { "src": "/",               "dest": "/index.html" }
+  ]
+}
